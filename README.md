@@ -11,19 +11,20 @@ This repository provides a curated collection of **instructions**, **prompts**, 
 ### 📋 Instructions
 Reusable guideline files that teach AI tools about your project's standards, conventions, and best practices.
 
-- **Language-specific standards**: TypeScript, React, Next.js
-- **Domain-specific guidance**: Accessibility (a11y), security (OWASP), testing (Playwright)
-- **Documentation standards**: Self-explanatory code, auto-updating docs
+- **Core Standards**: Performance optimization, API integration, TypeScript, testing patterns
+- **Framework-Specific**: React, Next.js, Angular, Vue, Svelte with modern patterns
+- **Domain Guidance**: Accessibility (a11y), security (OWASP), code commenting, documentation
+- **Workflow Standards**: Auto-updating docs, self-explanatory code
 
 [View all instructions →](instructions/)
 
 ### 💬 Prompts
 Pre-built prompt templates for common development tasks and workflows.
 
-- **Project setup**: GitHub Copilot configuration, architecture blueprints
-- **Code generation**: Test generation, documentation writing
-- **Code quality**: Review and refactor, safety reviews
-- **Meta prompts**: Prompt builder, instructions generator
+- **Code generation**: Component generators, test generation, documentation writing
+- **Code quality**: Component refactoring, review and safety audits
+- **Project setup**: GitHub Copilot configuration, architecture blueprints, folder structure
+- **Meta prompts**: Prompt builder, instructions generator, model recommendations
 
 [View all prompts →](prompts/)
 
@@ -66,22 +67,36 @@ Specialized workflow modules that combine instructions and prompts for complex t
 
 ```
 frontend-context-guidelines/
-├── instructions/          # Reusable guideline files
-│   ├── typescript-5-es2022.instructions.md
-│   ├── reactjs.instructions.md
-│   ├── nextjs.instructions.md
-│   ├── a11y.instructions.md
-│   ├── security-and-owasp.instructions.md
-│   └── ...
-├── prompts/              # Pre-built prompt templates
-│   ├── github-copilot-starter.prompt.md
-│   ├── documentation-writer.prompt.md
-│   ├── playwright-generate-test.prompt.md
-│   └── ...
-├── skills/               # Advanced workflow modules
+├── instructions/                    # Reusable guideline files
+│   ├── Core (Framework-Agnostic)
+│   │   ├── frontend-performance.instructions.md
+│   │   ├── api-integration.instructions.md
+│   │   ├── typescript-5-es2022.instructions.md
+│   │   ├── a11y.instructions.md
+│   │   ├── security-and-owasp.instructions.md
+│   │   └── ...
+│   └── frameworks/                  # Framework-specific guidelines
+│       ├── react/
+│       ├── nextjs/
+│       ├── angular/
+│       ├── vue/
+│       └── svelte/
+├── prompts/                         # Pre-built prompt templates
+│   ├── Core
+│   │   ├── component-refactor.prompt.md
+│   │   ├── test-generator.prompt.md
+│   │   ├── documentation-writer.prompt.md
+│   │   └── ...
+│   └── frameworks/                  # Framework-specific prompts
+│       ├── react/
+│       ├── nextjs/
+│       ├── angular/
+│       ├── vue/
+│       └── svelte/
+├── skills/                          # Advanced workflow modules
 │   ├── web-design-reviewer/
 │   └── webapp-testing/
-└── docs/                 # Comprehensive documentation
+└── docs/                            # Comprehensive documentation
     ├── tutorial-getting-started.md
     ├── how-to-*.md
     ├── reference-*.md
@@ -94,13 +109,25 @@ frontend-context-guidelines/
 Use the [github-copilot-starter](prompts/github-copilot-starter.prompt.md) prompt to generate a complete GitHub Copilot configuration tailored to your stack.
 
 ### Maintaining Code Quality
-Apply [reactjs](instructions/reactjs.instructions.md), [typescript](instructions/typescript-5-es2022.instructions.md), and [security](instructions/security-and-owasp.instructions.md) instructions to ensure consistent standards.
+Apply framework-specific instructions ([React](instructions/frameworks/react/), [Next.js](instructions/frameworks/nextjs/), etc.) with [TypeScript](instructions/typescript-5-es2022.instructions.md), [performance](instructions/frontend-performance.instructions.md), and [security](instructions/security-and-owasp.instructions.md) standards.
+
+### Generating Components
+Use framework-specific component generators to create production-ready components with proper typing, accessibility, and patterns.
+
+### Refactoring Existing Code
+Leverage [component-refactor](prompts/component-refactor.prompt.md) to analyze and improve components for better patterns, performance, and accessibility.
 
 ### Generating Tests
-Use [playwright-generate-test](prompts/playwright-generate-test.prompt.md) to create comprehensive end-to-end tests from your application code.
+Use [test-generator](prompts/test-generator.prompt.md) to create comprehensive tests following modern best practices.
 
-### Code Review & Refactoring
-Leverage [review-and-refactor](prompts/review-and-refactor.prompt.md) to analyze code quality and suggest improvements.
+### API Integration
+Follow [api-integration](instructions/api-integration.instructions.md) patterns for proper error handling, retry logic, and data fetching.
+
+### Performance Optimization
+Apply [frontend-performance](instructions/frontend-performance.instructions.md) guidelines to optimize bundle size, loading times, and runtime performance.
+
+### Code Review
+Use [review-and-refactor](prompts/review-and-refactor.prompt.md) to analyze code quality and suggest improvements.
 
 ### Visual Design Validation
 Deploy the [web-design-reviewer](skills/web-design-reviewer/) skill to automatically identify and fix UI/UX issues.
@@ -124,12 +151,12 @@ We welcome contributions from the community! Whether you want to add new instruc
 
 ## Technology Stack
 
-This repository focuses on front-end development with:
+This repository focuses on modern front-end development with:
 
 - **Languages**: TypeScript, JavaScript (ES2022+)
-- **Frameworks**: React 19+, Next.js 14+
-- **Testing**: Playwright, Jest
-- **Standards**: Accessibility (WCAG), Security (OWASP), Performance
+- **Frameworks**: React 19+, Next.js 15+, Angular 18+, Vue 3, Svelte 4+
+- **Testing**: Playwright, Jest, Vitest, React Testing Library
+- **Standards**: Performance optimization, API integration, Accessibility (WCAG), Security (OWASP)
 
 ## License
 
