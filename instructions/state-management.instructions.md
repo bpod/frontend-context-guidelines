@@ -300,25 +300,7 @@ export function useUser(userId: string) {
 export function useUpdateUser() {
   const queryClient = useQueryClient();
 
-```typescript
-// queries/users.ts
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-
-// Fetch users
-export function useUsers() {
-  return useQuery({
-    queryKey: ["users"],
-    queryFn: async () => {
-      const response = await fetch("/api/users");
-      if (!response.ok) throw new Error("Failed to fetch users");
-      return response.json();
-    },
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
-  });
-}
-
-// Fetch single user with dependencies
+<!-- Duplicate TanStack Query example removed -->
 export function useUser(userId: string) {
   return useQuery({
     queryKey: ["users", userId],
