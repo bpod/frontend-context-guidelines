@@ -10,19 +10,26 @@ This repository provides a curated collection of **instructions**, **prompts**, 
 
 ### 📋 Instructions
 Reusable guideline files that teach AI tools about your project's standards, conventions, and best practices.
+Reusable guideline files that teach AI tools about your project's standards, conventions, and best practices. These instruction files are automatically applied when working on matching file types.
 
 - **Core Standards**: Performance optimization, API integration, TypeScript, testing patterns
+- **Core Fundamentals**: TypeScript, Performance, API Integration, CSS, State Management
+- **UI/UX Standards**: Responsive Design, Forms & Validation, Error Handling
 - **Framework-Specific**: React, Next.js, Angular, Vue, Svelte with modern patterns
 - **Domain Guidance**: Accessibility (a11y), security (OWASP), code commenting, documentation
+- **Quality Standards**: Accessibility (a11y), Security (OWASP), Self-Explanatory Code
 - **Workflow Standards**: Auto-updating docs, self-explanatory code
 
 [View all instructions →](instructions/)
 
 ### 💬 Prompts
 Pre-built prompt templates for common development tasks and workflows.
+Pre-built prompt templates for common development tasks and workflows. Use these as-is or customize for your specific needs.
 
 - **Code generation**: Component generators, test generation, documentation writing
 - **Code quality**: Component refactoring, review and safety audits
+- **Code Generation**: Framework-specific component/page generators, test generation
+- **Code Quality & Analysis**: Component refactoring, performance audits, accessibility audits
 - **Project setup**: GitHub Copilot configuration, architecture blueprints, folder structure
 - **Meta prompts**: Prompt builder, instructions generator, model recommendations
 
@@ -72,6 +79,11 @@ frontend-context-guidelines/
 │   │   ├── frontend-performance.instructions.md
 │   │   ├── api-integration.instructions.md
 │   │   ├── typescript-5-es2022.instructions.md
+│   │   ├── css-best-practices.instructions.md
+│   │   ├── state-management.instructions.md
+│   │   ├── responsive-design.instructions.md
+│   │   ├── forms-and-validation.instructions.md
+│   │   ├── error-handling.instructions.md
 │   │   ├── a11y.instructions.md
 │   │   ├── security-and-owasp.instructions.md
 │   │   └── ...
@@ -85,6 +97,8 @@ frontend-context-guidelines/
 │   ├── Core
 │   │   ├── component-refactor.prompt.md
 │   │   ├── test-generator.prompt.md
+│   │   ├── performance-audit.prompt.md
+│   │   ├── accessibility-audit.prompt.md
 │   │   ├── documentation-writer.prompt.md
 │   │   └── ...
 │   └── frameworks/                  # Framework-specific prompts
@@ -123,8 +137,29 @@ Use [test-generator](prompts/test-generator.prompt.md) to create comprehensive t
 ### API Integration
 Follow [api-integration](instructions/api-integration.instructions.md) patterns for proper error handling, retry logic, and data fetching.
 
+### CSS and Styling
+Apply [css-best-practices](instructions/css-best-practices.instructions.md) for naming conventions, scoping strategies, and maintainable stylesheets.
+
+### State Management
+Follow [state-management](instructions/state-management.instructions.md) patterns for client state, server state, and state management libraries.
+
+### Responsive Design
+Implement [responsive-design](instructions/responsive-design.instructions.md) guidelines for mobile-first, accessible layouts across all devices.
+
+### Forms and Validation
+Use [forms-and-validation](instructions/forms-and-validation.instructions.md) for accessible forms with robust validation.
+
+### Error Handling
+Apply [error-handling](instructions/error-handling.instructions.md) strategies for error boundaries, logging, and user feedback.
+
 ### Performance Optimization
 Apply [frontend-performance](instructions/frontend-performance.instructions.md) guidelines to optimize bundle size, loading times, and runtime performance.
+
+### Performance Audits
+Run [performance-audit](prompts/performance-audit.prompt.md) to analyze bundle size, Core Web Vitals, and identify optimization opportunities.
+
+### Accessibility Audits
+Use [accessibility-audit](prompts/accessibility-audit.prompt.md) to conduct comprehensive WCAG 2.2 Level AA compliance reviews.
 
 ### Code Review
 Use [review-and-refactor](prompts/review-and-refactor.prompt.md) to analyze code quality and suggest improvements.

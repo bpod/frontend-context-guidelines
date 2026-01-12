@@ -71,7 +71,7 @@ Each resource is designed to work independently **and** combine with others:
 ```
 Instructions Stack:
 ├── typescript-5-es2022.instructions.md   (language layer)
-├── reactjs.instructions.md               (framework layer)
+├── frameworks/react/react.instructions.md               (framework layer)
 ├── nextjs.instructions.md                (meta-framework layer)
 └── custom-design-system.instructions.md  (project layer)
 ```
@@ -136,7 +136,7 @@ Write good components using modern patterns.
 
 **Examples**:
 - `typescript-5-es2022.instructions.md` → All TypeScript files
-- `reactjs.instructions.md` → All React components
+- `frameworks/react/react.instructions.md` → All React components
 - `a11y.instructions.md` → All files (accessibility applies everywhere)
 
 **Design Decision**: Why not one giant instruction file?
@@ -162,7 +162,7 @@ Problems:
 ```markdown
 instructions/
 ├── typescript-5-es2022.instructions.md (applies to .ts files)
-├── reactjs.instructions.md (applies to .jsx/.tsx files)
+├── frameworks/react/react.instructions.md (applies to .jsx/.tsx files)
 └── security-and-owasp.instructions.md (applies to all files)
 ```
 
@@ -334,7 +334,7 @@ Well-structured context → Better AI outputs:
 .github/
 └── instructions/
     ├── typescript-5-es2022.instructions.md
-    ├── reactjs.instructions.md
+    ├── frameworks/react/react.instructions.md
     └── security-and-owasp.instructions.md
 ```
 
@@ -447,7 +447,7 @@ prompts/
 **Problem**: Using instructions/prompts as-is without adapting
 
 ```markdown
-# Copied reactjs.instructions.md
+# Copied frameworks/react/react.instructions.md
 ✅ Use class components  (YOUR TEAM USES FUNCTIONAL!)
 ✅ Use Redux (YOUR TEAM USES ZUSTAND!)
 ```

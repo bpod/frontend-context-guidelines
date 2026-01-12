@@ -63,6 +63,88 @@ Guidelines for building high-quality Vue 3 applications using Composition API an
 - Implement accessible form markup
 - Handle dynamic form fields cleanly
 
+#### Composition API Example
+
+```vue
+<script setup lang="ts">
+import { computed, reactive, ref } from "vue";
+
+type FormData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+const formData = reactive<FormData>({ name: "", email: "", message: "" });
+const errors = reactive<Partial<Record<keyof FormData, string>>>({});
+const touched = reactive<Partial<Record<keyof FormData, boolean>>>({});
+
+const isValid = computed(() => {
+  return (
+    Object.keys(errors).length === 0 &&
+    Object.values(formData).every((val) => val.trim() !== "")
+  );
+});
+
+function validateField(field: keyof FormData): string | null {
+  const value = formData[field];
+  if (field === "name") {
+    if (!value) return "Name is required";
+    if (value.length < 2) return "Name must be at least 2 characters";
+    return null;
+  }
+  if (field === "email") {
+    if (!value) return "Email is required";
+    if (!/\S+@\S+\.\S+/.test(value)) return "Invalid email";
+    return null;
+  }
+  if (field === "message") {
+    if (!value) return "Message is required";
+    if (value.length < 10) return "Message must be at least 10 characters";
+    return null;
+  }
+  return null;
+}
+
+function handleBlur(field: keyof FormData) {
+  touched[field] = true;
+  const error = validateField(field);
+  if (error) errors[field] = error;
+  else delete errors[field];
+}
+
+function handleInput(field: keyof FormData) {
+  if (touched[field]) {
+    const error = validateField(field);
+    if (error) errors[field] = error;
+    else delete errors[field];
+  }
+}
+
+async function handleSubmit() {
+  (Object.keys(formData) as Array<keyof FormData>).forEach((field) => {
+    touched[field] = true;
+    const error = validateField(field);
+    if (error) errors[field] = error;
+  });
+
+  if (!isValid.value) return;
+  await submitForm(formData);
+}
+</script>
+
+<template>
+  <form @submit.prevent="handleSubmit">
+    <input
+      v-model="formData.name"
+      @blur="handleBlur('name')"
+      @input="handleInput('name')"
+    />
+    <span v-if="errors.name">{{ errors.name }}</span>
+  </form>
+</template>
+```
+
 ### Async Operations
 
 - Use async/await in setup or actions
@@ -80,6 +162,38 @@ Guidelines for building high-quality Vue 3 applications using Composition API an
 - Use CSS custom properties for theming
 - Keep styles co-located with components
 - Ensure accessibility in styles
+
+### Responsive Patterns
+
+```vue
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from "vue";
+
+const isMobile = ref(false);
+
+function updateBreakpoint() {
+  isMobile.value = window.innerWidth < 768;
+}
+
+onMounted(() => {
+  updateBreakpoint();
+  window.addEventListener("resize", updateBreakpoint);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("resize", updateBreakpoint);
+});
+</script>
+
+<template>
+  <nav v-if="isMobile">
+    <MobileNav />
+  </nav>
+  <nav v-else>
+    <DesktopNav />
+  </nav>
+</template>
+```
 
 ### Routing
 

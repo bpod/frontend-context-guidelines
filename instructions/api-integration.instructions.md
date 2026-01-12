@@ -331,93 +331,12 @@ async function fetchWithRetry<T>(
 }
 ```
 
-### React Query Integration
+## Framework-Specific Data Fetching
 
-```typescript
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+For framework-specific patterns and libraries:
 
-function useUsers() {
-  return useQuery({
-    queryKey: ["users"],
-    queryFn: () => userService.getUsers(),
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
-  });
-}
-
-function useCreateUser() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: userService.createUser,
-    onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries({ queryKey: ["users"] });
-    },
-  });
-}
-```
-
-### Error Handling Component
-
-```typescript
-interface ApiErrorProps {
-  error: Error;
-  retry?: () => void;
-}
-
-function ApiError({ error, retry }: ApiErrorProps) {
-  const isNetworkError =
-    error.message.includes("network") || error.message.includes("fetch");
-
-  return (
-    <div className="error-container">
-      <h3>Something went wrong</h3>
-      <p>
-        {isNetworkError
-          ? "Unable to connect. Please check your internet connection."
-          : "An error occurred. Please try again later."}
-      </p>
-      {retry && <button onClick={retry}>Try Again</button>}
-    </div>
-  );
-}
-```
-
-### Optimistic Update
-
-```typescript
-function useUpdateUser() {
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: userService.updateUser,
-    onMutate: async (updatedUser) => {
-      // Cancel outgoing refetches
-      await queryClient.cancelQueries({ queryKey: ["users", updatedUser.id] });
-
-      // Snapshot previous value
-      const previousUser = queryClient.getQueryData(["users", updatedUser.id]);
-
-      // Optimistically update
-      queryClient.setQueryData(["users", updatedUser.id], updatedUser);
-
-      return { previousUser };
-    },
-    onError: (err, updatedUser, context) => {
-      // Rollback on error
-      queryClient.setQueryData(
-        ["users", updatedUser.id],
-        context?.previousUser
-      );
-    },
-    onSettled: (data, error, updatedUser) => {
-      // Refetch after success or error
-      queryClient.invalidateQueries({ queryKey: ["users", updatedUser.id] });
-    },
-  });
-}
-```
+- **React**: React Query/TanStack Query patterns in [instructions/frameworks/react/react.instructions.md](instructions/frameworks/react/react.instructions.md)
+- **Vue**: Data fetching patterns in [instructions/frameworks/vue/vue.instructions.md](instructions/frameworks/vue/vue.instructions.md)
 
 ## Validation and Verification
 
@@ -427,6 +346,6 @@ function useUpdateUser() {
 - Test request cancellation on component unmount
 - Verify authentication flows including token refresh
 - Test retry logic with network throttling
-- Verify caching behavior with React Query DevTools
+- Verify caching behavior with appropriate DevTools
 - Test loading and error states in UI
 - Monitor API errors in production

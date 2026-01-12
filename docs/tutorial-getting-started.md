@@ -27,7 +27,7 @@ Before you begin, ensure you have:
 ### Instructions
 Instructions are markdown files that teach AI tools about your project's standards and conventions. Think of them as a style guide that the AI reads before generating code.
 
-**Example**: The [reactjs.instructions.md](../instructions/reactjs.instructions.md) file tells the AI to use functional components with hooks, proper TypeScript types, and modern React patterns.
+**Example**: The [frameworks/react/react.instructions.md](../instructions/frameworks/react/react.instructions.md) file tells the AI to use functional components with hooks, proper TypeScript types, and modern React patterns.
 
 ### Prompts
 Prompts are templates for specific tasks. They provide structured workflows that guide the AI through complex operations.
@@ -59,7 +59,7 @@ Let's add your first instruction file to a project.
 3. **Copy a basic instruction file**:
    ```bash
    # From this repository's root
-   cp instructions/reactjs.instructions.md .github/instructions/
+   cp instructions/frameworks/react/react.instructions.md .github/instructions/
    ```
 
 4. **Open your project in VS Code**:
@@ -82,7 +82,7 @@ Let's add your first instruction file to a project.
 3. **Copy relevant instruction files** based on your stack:
    ```bash
    # For React projects
-   cp /path/to/frontend-context-guidelines/instructions/reactjs.instructions.md .github/instructions/
+   cp /path/to/frontend-context-guidelines/instructions/frameworks/react/react.instructions.md .github/instructions/
 
    # For TypeScript projects
    cp /path/to/frontend-context-guidelines/instructions/typescript-5-es2022.instructions.md .github/instructions/
@@ -165,7 +165,7 @@ Let's use a prompt template to generate documentation.
 
 Now let's make it yours!
 
-1. **Open** [.github/instructions/reactjs.instructions.md](.github/instructions/reactjs.instructions.md)
+1. **Open** [.github/instructions/frameworks/react/react.instructions.md](.github/instructions/frameworks/react/react.instructions.md)
 
 2. **Add project-specific context**. For example:
    ```markdown

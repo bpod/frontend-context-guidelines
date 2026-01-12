@@ -37,14 +37,14 @@ Guidelines for building performant frontend applications with optimal bundle siz
 - Lazy load components below the fold or on interaction
 - Preload critical chunks that are likely to be needed soon
 - Prefetch resources for anticipated navigation
-- Use React.lazy(), Vue's defineAsyncComponent(), or framework equivalents
+- Use framework lazy loading capabilities
 - Avoid over-splitting; too many small chunks increase overhead
 
 ### Image and Media Optimization
 
 - Use modern formats (WebP, AVIF) with fallbacks
 - Implement responsive images with srcset and sizes attributes
-- Use framework image components (Next.js Image, Nuxt Image)
+- Use framework image components when available
 - Lazy load images below the fold
 - Set explicit width and height to prevent layout shift
 - Compress images without visible quality loss
@@ -57,7 +57,7 @@ Guidelines for building performant frontend applications with optimal bundle siz
 - Place non-critical scripts at the end of body or use defer/async attributes
 - Minimize main thread work by deferring non-essential JavaScript
 - Use web workers for expensive computations
-- Implement virtual scrolling for long lists (react-window, vue-virtual-scroller)
+- Implement virtual scrolling for long lists
 - Debounce or throttle expensive event handlers (scroll, resize, input)
 - Use requestIdleCallback for non-urgent work
 - Minimize JavaScript execution time in each frame (target 16ms for 60fps)
@@ -67,7 +67,7 @@ Guidelines for building performant frontend applications with optimal bundle siz
 - Extract and inline critical CSS for above-the-fold content
 - Load non-critical CSS asynchronously
 - Minimize CSS bundle size by removing unused styles
-- Use CSS-in-JS with proper optimization (emotion, styled-components)
+- Use CSS-in-JS with proper optimization when beneficial
 - Avoid CSS @import; use build tools to concatenate
 - Minimize reflows and repaints by batching DOM changes
 - Use CSS containment to limit layout scope
@@ -124,11 +124,11 @@ Guidelines for building performant frontend applications with optimal bundle siz
 
 ### Runtime Performance
 
-- Use React.memo, Vue computed, or framework equivalents to prevent re-renders
+- Use memoization and computed properties to prevent unnecessary re-renders
 - Implement proper key attributes in lists
 - Avoid inline function definitions in render methods
 - Use production builds in production
-- Profile with React DevTools, Vue DevTools, or browser performance tools
+- Profile with browser DevTools and framework-specific tools
 - Minimize DOM manipulation; batch changes when needed
 - Use requestAnimationFrame for animations
 - Implement efficient state updates (immutable patterns)
@@ -186,108 +186,6 @@ Define and enforce performance budgets:
 - Analyze bundle size after every build
 - Set up performance monitoring (Sentry, New Relic, DataDog)
 - Test on real devices and network conditions
-
-## Common Patterns
-
-### Dynamic Import for Route Splitting
-
-```typescript
-// React with React Router
-const Dashboard = lazy(() => import("./pages/Dashboard"));
-
-function App() {
-  return (
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Suspense>
-  );
-}
-```
-
-### Optimized Image Component
-
-```typescript
-// Next.js
-import Image from "next/image";
-
-function ProductImage({ src, alt }) {
-  return (
-    <Image
-      src={src}
-      alt={alt}
-      width={800}
-      height={600}
-      placeholder="blur"
-      loading="lazy"
-    />
-  );
-}
-```
-
-### Virtual Scrolling
-
-```typescript
-// React with react-window
-import { FixedSizeList } from "react-window";
-
-function LargeList({ items }) {
-  return (
-    <FixedSizeList
-      height={600}
-      itemCount={items.length}
-      itemSize={50}
-      width="100%"
-    >
-      {({ index, style }) => <div style={style}>{items[index].name}</div>}
-    </FixedSizeList>
-  );
-}
-```
-
-### Debounced Search Input
-
-```typescript
-import { useState, useEffect } from "react";
-
-function SearchInput({ onSearch }) {
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      onSearch(query);
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [query, onSearch]);
-
-  return (
-    <input
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      placeholder="Search..."
-    />
-  );
-}
-```
-
-### Memoized Component
-
-```typescript
-import { memo } from "react";
-
-const ExpensiveComponent = memo(
-  ({ data }) => {
-    // Expensive rendering logic
-    return <div>{/* rendered content */}</div>;
-  },
-  (prevProps, nextProps) => {
-    // Custom comparison function
-    return prevProps.data.id === nextProps.data.id;
-  }
-);
-```
 
 ## Validation and Verification
 

@@ -45,6 +45,64 @@ Guidelines for building high-quality Svelte applications following official Svel
 - Keep state immutable when possible
 - Use context API for component tree state sharing
 
+#### Custom Store Example
+
+```typescript
+// stores/notifications.ts
+import { derived, writable } from "svelte/store";
+
+type Notification = {
+  id: string;
+  message: string;
+  type: "info" | "success" | "warning" | "error";
+  duration: number;
+};
+
+function createNotificationStore() {
+  const { subscribe, update } = writable<Notification[]>([]);
+
+  return {
+    subscribe,
+    add: (notification: Omit<Notification, "id">) => {
+      const id = crypto.randomUUID();
+      const next = { id, ...notification };
+      update((notifications) => [...notifications, next]);
+
+      if (notification.duration > 0) {
+        setTimeout(() => {
+          update((notifications) => notifications.filter((n) => n.id !== id));
+        }, notification.duration);
+      }
+    },
+    remove: (id: string) => {
+      update((notifications) => notifications.filter((n) => n.id !== id));
+    },
+    clear: () => update(() => []),
+  };
+}
+
+export const notifications = createNotificationStore();
+export const unreadCount = derived(
+  notifications,
+  ($notifications) => $notifications.length
+);
+```
+
+```svelte
+<script lang="ts">
+  import { notifications, unreadCount } from "./stores/notifications";
+
+  function showNotification() {
+    notifications.add({ message: "Task completed", type: "success", duration: 3000 });
+  }
+</script>
+
+<div>
+  <button on:click={showNotification}>Show Notification</button>
+  <span>Unread: {$unreadCount}</span>
+</div>
+```
+
 ### Forms and Validation
 
 - Use form element binding with `bind:` directive
