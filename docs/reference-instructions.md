@@ -16,6 +16,13 @@ This reference provides a comprehensive guide to all instruction files. Each ent
 | Instruction | Languages/Frameworks | Focus Area | Complexity |
 |-------------|---------------------|------------|------------|
 | [typescript-5-es2022](#typescript-5-es2022) | TypeScript, JavaScript | Language features | ⭐⭐ |
+| [frontend-performance](#frontend-performance) | All | Performance optimization | ⭐⭐⭐⭐ |
+| [api-integration](#api-integration) | All | API patterns | ⭐⭐⭐ |
+| [css-best-practices](#css-best-practices) | CSS, SCSS, styled | Styling patterns | ⭐⭐⭐ |
+| [state-management](#state-management) | React, Vue, Svelte | State patterns | ⭐⭐⭐⭐ |
+| [responsive-design](#responsive-design) | All | Responsive UI | ⭐⭐⭐ |
+| [forms-and-validation](#forms-and-validation) | All | Form handling | ⭐⭐⭐⭐ |
+| [error-handling](#error-handling) | All | Error patterns | ⭐⭐⭐⭐ |
 | [reactjs](#reactjs) | React | Component patterns | ⭐⭐⭐ |
 | [nextjs](#nextjs) | Next.js | Framework best practices | ⭐⭐⭐⭐ |
 | [playwright-typescript](#playwright-typescript) | Playwright | E2E testing | ⭐⭐⭐ |
@@ -26,6 +33,203 @@ This reference provides a comprehensive guide to all instruction files. Each ent
 | [instructions](#instructions) | All | Meta (writing instructions) | ⭐⭐⭐ |
 
 ## Detailed Reference
+
+### Frontend Performance
+
+**File**: [frontend-performance.instructions.md](../instructions/frontend-performance.instructions.md)
+
+**Description**: Performance optimization patterns for bundle size, loading times, Core Web Vitals, and runtime performance.
+
+**Best for**:
+- Optimizing application performance
+- Improving Core Web Vitals scores
+- Reducing bundle size and load times
+- Runtime performance optimization
+
+**Applies to**: `**/*.{ts,tsx,js,jsx,vue,svelte,css,scss}`
+
+**Key Topics**:
+- Bundle size optimization and code splitting
+- Core Web Vitals (LCP, FID, CLS, INP, TTFB)
+- Lazy loading and dynamic imports
+- Image optimization
+- Font loading strategies
+- Caching strategies
+- Performance budgets
+
+**Combines Well With**:
+- Framework-specific instructions for optimization patterns
+- `accessibility-audit.prompt.md` for performance + accessibility
+
+---
+
+### API Integration
+
+**File**: [api-integration.instructions.md](../instructions/api-integration.instructions.md)
+
+**Description**: HTTP API integration patterns with error handling, retry logic, and type-safe data fetching.
+
+**Best for**:
+- RESTful API integration
+- GraphQL clients
+- Error handling and retry strategies
+- Type-safe API calls
+
+**Applies to**: `**/*.{ts,tsx,js,jsx,vue,svelte}`
+
+**Key Topics**:
+- HTTP clients (Fetch API, Axios)
+- Error handling and retry logic
+- Request/response interceptors
+- Type safety with TypeScript
+- Custom hooks for data fetching
+- Optimistic updates
+
+**Combines Well With**:
+- `error-handling.instructions.md` for comprehensive error strategies
+- `state-management.instructions.md` for server state
+
+---
+
+### CSS Best Practices
+
+**File**: [css-best-practices.instructions.md](../instructions/css-best-practices.instructions.md)
+
+**Description**: CSS organization, naming conventions, preprocessors, and maintainable stylesheet patterns.
+
+**Best for**:
+- CSS architecture and organization
+- Naming conventions (BEM, utility-first)
+- Preprocessor patterns (SCSS)
+- CSS-in-JS implementations
+
+**Applies to**: `**/*.{css,scss,sass,less,styled.ts,styled.js}`
+
+**Key Topics**:
+- BEM and naming conventions
+- CSS Modules and scoping
+- CSS custom properties (variables)
+- Flexbox and Grid layouts
+- Performance optimization
+- Accessibility in CSS
+
+**Combines Well With**:
+- `responsive-design.instructions.md` for mobile-first styling
+- `a11y.instructions.md` for accessible styling
+
+---
+
+### State Management
+
+**File**: [state-management.instructions.md](../instructions/state-management.instructions.md)
+
+**Description**: State management patterns for client state, server state, and state management libraries.
+
+**Best for**:
+- React, Vue, Svelte applications
+- Client and server state separation
+- State management libraries (Redux, Zustand, Pinia)
+- Form state management
+
+**Applies to**: `**/*.{ts,tsx,js,jsx,vue,svelte}`
+
+**Key Topics**:
+- Local vs global state
+- Server state with TanStack Query
+- Zustand for lightweight state
+- Redux Toolkit for complex state
+- Vue Pinia
+- Form state patterns
+
+**Combines Well With**:
+- Framework-specific instructions
+- `forms-and-validation.instructions.md` for form state
+
+---
+
+### Responsive Design
+
+**File**: [responsive-design.instructions.md](../instructions/responsive-design.instructions.md)
+
+**Description**: Mobile-first responsive design patterns with breakpoints, fluid typography, and adaptive layouts.
+
+**Best for**:
+- Mobile-first development
+- Responsive breakpoint strategies
+- Fluid typography and spacing
+- Touch-friendly interfaces
+
+**Applies to**: `**/*.{css,scss,sass,tsx,jsx,vue,svelte}`
+
+**Key Topics**:
+- Mobile-first approach
+- Breakpoint strategies
+- Fluid typography with clamp()
+- Responsive images
+- Container queries
+- Touch target sizing
+
+**Combines Well With**:
+- `css-best-practices.instructions.md` for styling patterns
+- `a11y.instructions.md` for accessible responsive design
+
+---
+
+### Forms and Validation
+
+**File**: [forms-and-validation.instructions.md](../instructions/forms-and-validation.instructions.md)
+
+**Description**: Form handling and validation patterns for accessible, user-friendly forms.
+
+**Best for**:
+- Form development
+- Client and server-side validation
+- React Hook Form, Formik patterns
+- Accessible form design
+
+**Applies to**: `**/*.{ts,tsx,js,jsx,vue,svelte}`
+
+**Key Topics**:
+- Semantic form HTML
+- Validation strategies
+- React Hook Form patterns
+- Accessible error messaging
+- Multi-step forms
+- Async validation
+
+**Combines Well With**:
+- `a11y.instructions.md` for accessible forms
+- `state-management.instructions.md` for form state
+
+---
+
+### Error Handling
+
+**File**: [error-handling.instructions.md](../instructions/error-handling.instructions.md)
+
+**Description**: Error handling strategies including error boundaries, logging, user feedback, and graceful degradation.
+
+**Best for**:
+- Robust error handling
+- Error boundaries (React)
+- Logging and monitoring
+- User-friendly error messages
+
+**Applies to**: `**/*.{ts,tsx,js,jsx,vue,svelte}`
+
+**Key Topics**:
+- Error boundaries
+- Async error handling
+- Error logging and monitoring
+- Retry mechanisms
+- Graceful degradation
+- User-friendly error messages
+
+**Combines Well With**:
+- `api-integration.instructions.md` for API error handling
+- Framework-specific instructions
+
+---
 
 ### TypeScript 5 ES2022
 
@@ -58,7 +262,7 @@ This reference provides a comprehensive guide to all instruction files. Each ent
 - Leverage conditional types
 
 **Combines Well With**:
-- `reactjs.instructions.md` for React + TypeScript
+- `frameworks/react/react.instructions.md` for React + TypeScript
 - `nextjs.instructions.md` for Next.js + TypeScript
 - `security-and-owasp.instructions.md` for type-safe security
 
@@ -82,7 +286,7 @@ async function fetchUser(id: string): Promise<UserData> {
 
 ### ReactJS
 
-**File**: [reactjs.instructions.md](../instructions/reactjs.instructions.md)
+**File**: [frameworks/react/react.instructions.md](../instructions/frameworks/react/react.instructions.md)
 
 **Description**: ReactJS development standards and best practices for building modern React applications.
 
@@ -182,7 +386,7 @@ export const Button: React.FC<ButtonProps> = ({
 - Static and dynamic rendering
 
 **Combines Well With**:
-- `reactjs.instructions.md` for React patterns
+- `frameworks/react/react.instructions.md` for React patterns
 - `typescript-5-es2022.instructions.md` for TypeScript
 - `a11y.instructions.md` for accessible apps
 - `security-and-owasp.instructions.md` for secure APIs
@@ -244,7 +448,7 @@ export default async function ProductPage({
 - Test data management
 
 **Combines Well With**:
-- `reactjs.instructions.md` for testing React components
+- `frameworks/react/react.instructions.md` for testing React components
 - `nextjs.instructions.md` for testing Next.js apps
 - `a11y.instructions.md` for accessibility testing
 
@@ -311,7 +515,7 @@ test.describe('Shopping Cart', () => {
 - Use people-first language
 
 **Combines Well With**:
-- `reactjs.instructions.md` for accessible React components
+- `frameworks/react/react.instructions.md` for accessible React components
 - `nextjs.instructions.md` for accessible Next.js apps
 - `playwright-typescript.instructions.md` for accessibility testing
 
@@ -565,7 +769,7 @@ Clear introduction.
 
 For new projects, start with:
 1. Language instruction (e.g., `typescript-5-es2022.instructions.md`)
-2. Framework instruction (e.g., `reactjs.instructions.md` or `nextjs.instructions.md`)
+2. Framework instruction (e.g., `frameworks/react/react.instructions.md` or `nextjs.instructions.md`)
 3. Security instruction (`security-and-owasp.instructions.md`)
 
 ### Recommended Set (Most Projects)

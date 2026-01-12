@@ -22,7 +22,7 @@ Browse the [instructions directory](../instructions/) and select files that matc
 
 | Your Stack | Recommended Instructions |
 |------------|-------------------------|
-| React + TypeScript | `reactjs.instructions.md`, `typescript-5-es2022.instructions.md` |
+| React + TypeScript | `frameworks/react/react.instructions.md`, `typescript-5-es2022.instructions.md` |
 | Next.js + TypeScript | `nextjs.instructions.md`, `typescript-5-es2022.instructions.md` |
 | Testing with Playwright | `playwright-typescript.instructions.md` |
 | Accessibility focus | `a11y.instructions.md` |
@@ -40,7 +40,7 @@ cd /path/to/your/project
 mkdir -p .github/instructions
 
 # Copy instruction files (adjust paths as needed)
-cp /path/to/frontend-context-guidelines/instructions/reactjs.instructions.md .github/instructions/
+cp /path/to/frontend-context-guidelines/instructions/frameworks/react/react.instructions.md .github/instructions/
 cp /path/to/frontend-context-guidelines/instructions/typescript-5-es2022.instructions.md .github/instructions/
 ```
 
@@ -51,7 +51,7 @@ cp /path/to/frontend-context-guidelines/instructions/typescript-5-es2022.instruc
 3. Start typing a comment describing what you want
 4. GitHub Copilot suggestions should reflect the instruction guidelines
 
-**Example**: With `reactjs.instructions.md` active, typing `// Button component` should generate a functional component with proper TypeScript types.
+**Example**: With `frameworks/react/react.instructions.md` active, typing `// Button component` should generate a functional component with proper TypeScript types.
 
 ## Customizing Existing Instructions
 
@@ -282,7 +282,7 @@ applyTo: "**"
 **✅ Good**: One instruction file per major technology
 ```
 typescript-5-es2022.instructions.md
-reactjs.instructions.md
+frameworks/react/react.instructions.md
 nextjs.instructions.md
 ```
 
@@ -366,7 +366,7 @@ applyTo: "src/app/**/*"
 Create a hierarchy of guidelines:
 
 1. **Base**: `typescript-5-es2022.instructions.md` (applies to all `.ts` files)
-2. **Framework**: `reactjs.instructions.md` (applies to all `.tsx` files)
+2. **Framework**: `frameworks/react/react.instructions.md` (applies to all `.tsx` files)
 3. **Specific**: `design-system.instructions.md` (applies to `src/components/**`)
 
 The AI considers all applicable instructions together.
@@ -380,7 +380,7 @@ Reference other instruction files for shared concepts:
 
 This instruction builds on:
 - [TypeScript Guidelines](typescript-5-es2022.instructions.md)
-- [React Guidelines](reactjs.instructions.md)
+- [React Guidelines](frameworks/react/react.instructions.md)
 
 Refer to those files for base conventions.
 ```
@@ -439,7 +439,7 @@ applyTo: "src/**/*.tsx"  # Only matches .tsx in src/
 ```markdown
 # Instructions used:
 - typescript-5-es2022.instructions.md
-- reactjs.instructions.md
+- frameworks/react/react.instructions.md
 - nextjs.instructions.md
 - a11y.instructions.md
 - security-and-owasp.instructions.md
@@ -454,7 +454,7 @@ applyTo: "src/**/*.tsx"  # Only matches .tsx in src/
 ```markdown
 # Instructions used:
 - typescript-5-es2022.instructions.md
-- reactjs.instructions.md
+- frameworks/react/react.instructions.md
 - playwright-typescript.instructions.md
 
 # Custom additions:

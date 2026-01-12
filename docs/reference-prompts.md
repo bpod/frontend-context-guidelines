@@ -22,6 +22,10 @@ This reference provides detailed information about each prompt template. Each en
 | [readme-blueprint-generator](#readme-blueprint-generator) | Documentation | ⭐⭐⭐ | ✅ |
 | [create-agentsmd](#create-agentsmd) | Documentation | ⭐⭐ | ✅ |
 | [playwright-generate-test](#playwright-generate-test) | Code Gen | ⭐⭐⭐ | Optional |
+| [component-refactor](#component-refactor) | Quality | ⭐⭐⭐ | ✅ |
+| [test-generator](#test-generator) | Code Gen | ⭐⭐⭐ | ✅ |
+| [performance-audit](#performance-audit) | Quality | ⭐⭐⭐⭐⭐ | ✅ |
+| [accessibility-audit](#accessibility-audit) | Quality | ⭐⭐⭐⭐⭐ | ✅ |
 | [review-and-refactor](#review-and-refactor) | Quality | ⭐⭐⭐⭐ | ✅ |
 | [ai-prompt-engineering-safety-review](#ai-prompt-engineering-safety-review) | Quality | ⭐⭐⭐ | Optional |
 | [prompt-builder](#prompt-builder) | Meta | ⭐⭐⭐ | ✅ |
@@ -33,12 +37,182 @@ This reference provides detailed information about each prompt template. Each en
 
 ## Categories
 
+
+**Categories Explained:**
 - **Setup**: Project initialization and configuration
 - **Documentation**: Creating or updating documentation
 - **Code Gen**: Generating code artifacts
 - **Quality**: Code review and improvement
+- **Quality**: Code review, improvement, and auditing
 - **Meta**: Creating prompts and instructions
 - **Utility**: Helper prompts for workflows
+
+---
+
+## Code Generation Prompts
+
+### component-refactor
+
+**File**: [component-refactor.prompt.md](../prompts/component-refactor.prompt.md)
+
+**Purpose**: Analyze and improve existing components for better code quality, performance, and accessibility.
+
+**When to use**:
+- Refactoring legacy components
+- Improving component performance
+- Adding accessibility features
+- Modernizing older code patterns
+- Preparing code for review
+
+**Required input**:
+- Component file(s) to analyze
+- Framework context (React, Vue, Svelte)
+- Specific concerns (optional: performance, a11y, patterns)
+
+**Output**:
+- Detailed analysis of current code
+- Identified issues by category:
+  - Code quality and patterns
+  - Performance bottlenecks
+  - Accessibility issues
+  - Maintainability concerns
+- Refactored code with improvements
+- Explanation of changes
+
+**Agent mode**: Yes (recommended)
+
+---
+
+### test-generator
+
+**File**: [test-generator.prompt.md](../prompts/test-generator.prompt.md)
+
+**Purpose**: Generate comprehensive test suites for components, hooks, and functions.
+
+**When to use**:
+- Writing tests for new components
+- Adding missing test coverage
+- Modernizing test patterns
+- Following testing best practices
+
+**Required input**:
+- Component/function to test
+- Testing framework (Jest, Vitest)
+- Testing library (React Testing Library, Vue Test Utils)
+
+**Output**:
+- Complete test file with:
+  - Unit tests
+  - Integration tests
+  - Accessibility tests
+  - User interaction tests
+  - Edge case coverage
+- Proper mocking strategies
+- Test documentation
+
+**Agent mode**: Yes (recommended)
+
+---
+
+## Code Quality & Audit Prompts
+
+### performance-audit
+
+**File**: [performance-audit.prompt.md](../prompts/performance-audit.prompt.md)
+
+**Purpose**: Conduct comprehensive performance audit analyzing bundle size, Core Web Vitals, and runtime performance.
+
+**When to use**:
+- Pre-launch performance review
+- Investigating performance issues
+- Regular performance checkups
+- After major feature additions
+- When users report slow performance
+
+**Required input**:
+- Access to production or staging build
+- Application URL or build artifacts
+- Performance metrics baseline (optional)
+
+**Output**:
+- Executive summary with scores
+- Bundle analysis:
+  - Total bundle size
+  - Largest dependencies
+  - Unused code
+  - Optimization recommendations
+- Core Web Vitals analysis:
+  - LCP (Largest Contentful Paint)
+  - INP (Interaction to Next Paint)
+  - CLS (Cumulative Layout Shift)
+  - TTFB (Time to First Byte)
+- Runtime performance issues
+- Network performance review
+- Memory leak detection
+- Quick wins (high impact, low effort)
+- Long-term improvements
+- Performance budget recommendations
+
+**Agent mode**: Yes (required)
+
+**Tools used**:
+- Lighthouse
+- Bundle analyzers
+- Chrome DevTools Performance
+- Web Vitals library
+
+---
+
+### accessibility-audit
+
+**File**: [accessibility-audit.prompt.md](../prompts/accessibility-audit.prompt.md)
+
+**Purpose**: Conduct comprehensive WCAG 2.2 Level AA accessibility audit with actionable remediation guidance.
+
+**When to use**:
+- Pre-launch accessibility review
+- Legal compliance verification (ADA, Section 508)
+- Regular accessibility checkups
+- After major UI changes
+- When accessibility issues are reported
+
+**Required input**:
+- Application URL or code access
+- Target compliance level (A, AA, AAA)
+- Specific pages/features to audit (optional)
+
+**Output**:
+- Executive summary:
+  - Compliance level achieved
+  - Critical, major, minor issue counts
+  - Automated test scores
+- Detailed findings by category:
+  - Semantic HTML structure
+  - Keyboard navigation
+  - Screen reader compatibility
+  - Color contrast
+  - Forms and labels
+  - ARIA usage
+  - Focus management
+  - Images and media
+  - Mobile accessibility
+- Each issue includes:
+  - WCAG criterion reference
+  - User impact level
+  - Before/after code examples
+  - Testing methodology
+  - Priority level
+- Quick wins section
+- Prioritized recommendations
+
+**Agent mode**: Yes (required)
+
+**Tools used**:
+- axe DevTools
+- Lighthouse
+- Screen readers (NVDA, JAWS, VoiceOver)
+- Color contrast checkers
+- Keyboard navigation testing
 
 ---
 

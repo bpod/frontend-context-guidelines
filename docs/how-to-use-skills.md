@@ -534,7 +534,7 @@ Skills work better when combined with relevant instructions:
 ```
 # Instructions provide context
 .github/instructions/
-├── reactjs.instructions.md
+├── frameworks/react/react.instructions.md
 ├── a11y.instructions.md
 
 # Skills perform actions
