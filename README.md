@@ -9,7 +9,6 @@ This repository provides a curated collection of **instructions**, **prompts**, 
 ## What's Inside
 
 ### 📋 Instructions
-Reusable guideline files that teach AI tools about your project's standards, conventions, and best practices.
 Reusable guideline files that teach AI tools about your project's standards, conventions, and best practices. These instruction files are automatically applied when working on matching file types.
 
 - **Core Standards**: Performance optimization, API integration, TypeScript, testing patterns
